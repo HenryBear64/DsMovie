@@ -7,7 +7,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Embeddable
-public class ScorePK implements Seriariable {
+public class ScorePK implements Serializable {
 	
 	@ManyToOne
 	@JoinColumn(name ="movie_id")
