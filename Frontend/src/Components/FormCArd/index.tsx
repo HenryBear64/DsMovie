@@ -1,22 +1,30 @@
 import "./styles.css";
 import { Movie } from 'types/movie';
-import { Link, useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 function Form() {
 
    type Props = {
-       movie : Movie;
+       movieId : String;
    }
 
-function Form ( { movie } : Props) {
+function FormCArd ( { movieId } : Props) {
 
-    const params =useParams();
+    const [movie, setMovie] = useState<Movie>();
+
+    useEffect(() => {
+        axios.get('${BASE_URL}/movies/${movieId}')
+            .then(response => {
+                setMovir(response.data);
+            });
+    }, [movieId]);
+
 }
 
     return (
         <div className="dsmovie-form-container">
-            <img className="dsmovie-movie-card-image" src={movie.image} alt={movie.title} />
+            <img className="dsmovie-movie-card-image" src={movie?.image} alt={movie?.title} />
             <div className="dsmovie-card-bottom-container">
-                <h3>{movie.title}</h3>
+                <h3>{movie?.title}</h3>
                 <form className="dsmovie-form">
                     <div className="form-group dsmovie-form-group">
                         <label htmlFor="email">Informe seu email</label>
