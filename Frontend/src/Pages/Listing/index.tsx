@@ -7,15 +7,30 @@ import { BASE_URL } from "utils/requests";
 
 function Listing() {
 
-     const [pageNumber, setPageNumber] =useState(0);
+     const [pageNumber, setPageNumber] = useState(0);
 
-    useEffect(() => { axios.get("http://localhost:8080/movies?size=12page=1")
+const [page, setPage] = useState<MoviePage>({
+    content: [],
+    last: true,
+    totalPages: 0,
+    totalElements: 0,
+    size: 12,
+    number: 0,
+    first: true,
+    numberOfElements: 0,
+    empty: true,
+})
+
+
+    useEffect(() => { axios.get("http://localhost:8080/movies?size=12page=page${pageNumber")
     .then(response => {
         const data = response.data as MoviePage;
         setPageNumber(data.number);
+        setPage(data);
     )
 
     
+    co
         });
 
 
@@ -24,28 +39,14 @@ function Listing() {
             <Pagination />
 
             <div className="container">
-                <MovieCard />
-            </div>
+                <div className="row">
+                {page.content.map(item => {
+    
+                        <div key=(movie.Id) className="col-sm-6 col-lg-4 col-xl-3 mb-3"
+                    
+                })}
 
-            <div className="row">
-                <div className="col-sm-6 col-lg-4 col-xl-3 mb-3">
-
-                </div>
-
-                div className="row">
-                <div className="col-sm-6 col-lg-4 col-xl-3 mb-3">
-
-                </div>div className="row">
-                <div className="col-sm-6 col-lg-4 col-xl-3 mb-3">
-
-                </div>div className="row">
-                <div className="col-sm-6 col-lg-4 col-xl-3 mb-3">
-
-                </div>div className="row">
-                <div className="col-sm-6 col-lg-4 col-xl-3 mb-3">
-
-                </div>div className="row">
-                <div className="col-sm-6 col-lg-4 col-xl-3 mb-3">
+               
 
                 </div>
             </div>
