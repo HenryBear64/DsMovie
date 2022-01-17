@@ -4,6 +4,13 @@ import Pagination from "Components/Pagination";
 
 function Listing() {
 
+    // FORMA ERRADA
+    axios.get(("http://localhost:8080/movies?size=12page=0")
+        .then(response => {
+            console.log.respose.data;
+        });
+
+
     return (
         <>
             <Pagination />
