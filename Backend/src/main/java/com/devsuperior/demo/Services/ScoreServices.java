@@ -1,7 +1,5 @@
 package com.devsuperior.demo.Services;
 
-
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -25,7 +23,7 @@ public class ScoreServices {
 	private ScoreRepository scoreRepository;
 	
 	@Transactional
-	public void saveScore(ScoreDTO dto) {
+	public movieDTO saveScore(ScoreDTO dto) {
 		User user = userRepository.findByEmail(dto.getEmail());
 		if (user == null) {
 			user = new User();
@@ -54,5 +52,6 @@ public class ScoreServices {
 		movie = movieRepository.save(movie);
 
 		}
+	return new MovieDTO(movie);
 
 }
